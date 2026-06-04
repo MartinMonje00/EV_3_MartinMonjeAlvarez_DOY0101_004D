@@ -1,0 +1,27 @@
+name: test en commit o pull request en main
+
+on:
+  push:
+    branches:
+      - main
+  pull-request:
+    branches:
+      - main
+
+jobs:
+  mensaje-on-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Copiar el codigo del repositorio
+        uses: actions/checkout@v4
+      
+      - name: Configurar JDK del proyecto
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Ejecucion de pruebas con maven
+        run: mvn test
