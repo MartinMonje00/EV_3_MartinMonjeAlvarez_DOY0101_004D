@@ -1,0 +1,16 @@
+services:
+  java:
+    build:
+      context: .
+      dockerfile: Dockerfile.multistage
+    ports:
+      - "8080:8080"
+    command: ["java", "-jar", "app.jar"]
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+          cpus: "1.0"
+        reservations:
+          memory: 512M
+          cpus: "0.5"
