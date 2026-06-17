@@ -29,7 +29,8 @@ class GreetingsControllerTest {
         assertEquals("Hello Duoc", controller.greetings("Duoc"));
     }
 
-    @Test greetings_withEmptyString_returnsHelloWorld() {
+    @Test 
+    void greetings_withEmptyString_returnsHelloWorld() {
         assertEquals("Hello world", controller.greetings(""));
     }
 }
