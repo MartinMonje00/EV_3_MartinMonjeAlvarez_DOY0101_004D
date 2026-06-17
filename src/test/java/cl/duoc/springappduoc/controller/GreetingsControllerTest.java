@@ -30,6 +30,6 @@ class GreetingsControllerTest {
     }
 
     @Test greetings_withEmptyString_returnsHelloWorld() {
-        assertEquals("Hello world", controller.greetings(""))
+        assertEquals("Hello world", controller.greetings(""));
     }
 }
