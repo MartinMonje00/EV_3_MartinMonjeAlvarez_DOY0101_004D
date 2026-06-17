@@ -23,5 +23,18 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Ejecucion de pruebas con maven
-        run: mvn test
+      - name: Construccion y analisis con Sonarqube y JaCoCo
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn verify sonar:sonar \
+            -Dsonar.projectKey=MartinMonje00_EV_2_MartinMonjeAlvarez_DOY0101_004D \
+            -Dsonar.organization=martinmonje00 \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+
+      - name: Subida artefacto JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: app.jar
+          path: target/*.jar
