@@ -13,7 +13,7 @@ class GreetingsControllerTest {
     void index_returnsModelAndView() {
         ModelAndView mav = controller.index();
         assertEquals("index", mav.getViewName());
-        assertEquals("Welcome tho the Greetings API", mav.getModel().get("message"));
+        assertEquals("Welcome to the Greetings API", mav.getModel().get("message"));
     }
 
     @Test
